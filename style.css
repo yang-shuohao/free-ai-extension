@@ -1,0 +1,179 @@
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --card-bg: #f5f5f5;
+  --border: #cccccc;
+
+  --code-bg: #f0f0f0;
+  --code-border: #d1d5da;
+  --code-shadow: rgba(27,31,35,0.1);
+
+  --btn-bg: #007bff;
+  --btn-bg-disabled: #777;
+  --btn-copy-bg: #555;
+  --btn-copy-hover-bg: #238636;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1e1e;
+    --fg: #ffffff;
+    --card-bg: #2c2c2c;
+    --border: #444444;
+
+    --code-bg: #0d1117;
+    --code-border: #30363d;
+    --code-shadow: rgba(1,4,9,0.8);
+
+    --btn-bg: #238636;
+    --btn-bg-disabled: #555;
+    --btn-copy-bg: #333;
+    --btn-copy-hover-bg: #2ea043;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 600px;
+  height: 800px;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 16px 16px 8px 16px;
+  max-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+h1 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+button {
+  background-color: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: var(--btn-bg-disabled);
+  cursor: not-allowed;
+}
+
+.entry {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 200px;
+  max-height: 300px;
+  padding: 8px;
+  font-size: 18px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+select {
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.loading {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.media {
+  margin-top: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* 媒体元素自适应宽度 */
+.media video,
+.media audio,
+.media img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+/* 下载链接 */
+.download {
+  display: block;           /* 改成块级元素，方便居中 */
+  margin: 20px auto 0 auto;  /* 上间距8px，左右自动居中 */
+  background-color: #28a745;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  width: fit-content;       /* 宽度根据内容自动调整 */
+  text-align: center;       /* 文字居中 */
+  cursor: pointer;          /* 鼠标手型提示 */
+}
+
+/* 代码块样式 */
+.media pre {
+  position: relative;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px var(--code-shadow);
+  margin: 1em 0;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Fira Code', Consolas, Monaco, 'Courier New', monospace;
+}
+
+/* 代码复制按钮 */
+.copy-code-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: var(--btn-copy-bg);
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: background-color 0.3s, opacity 0.3s;
+  user-select: none;
+  z-index: 10;
+}
+
+.copy-code-btn:hover {
+  background-color: var(--btn-copy-hover-bg);
+  opacity: 1;
+}
